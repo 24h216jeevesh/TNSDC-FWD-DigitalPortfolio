@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeevesh | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+:root {
+--neon-blue: #00f3ff;
+--neon-pink: #ff00ff;
+--neon-purple: #bd00ff;
+--dark-bg: #0a0a10;
+--darker-bg: #050507;
+}
+body {
+font-family: 'Rajdhani', sans-serif;
+background-color: var(--dark-bg);
+color: #fff;
+overflow-x: hidden;
+line-height: 1.6;
+}
+.container {
+width: 90%;
+max-width: 1200px;
+margin: 0 auto;
+}
+/* Header & Navigation */
+header {
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 1000;
+padding: 20px 0;
+background: rgba(5, 5, 7, 0.8);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+}
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo {
+font-family: 'Orbitron', sans-serif;
+font-weight: 900;
+font-size: 2rem;
+color: #fff;
+text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+letter-spacing: 2px;
+}
+.nav-links {
+display: flex;
+gap: 30px;
+}
+.nav-links a {
+color: #fff;
+text-decoration: none;
+font-weight: 600;
+font-size: 1.1rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: all 0.3s ease;
+position: relative;
+}
+.nav-links a:hover {
+color: var(--neon-blue);
+}
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--neon-blue);
+transition: width 0.3s ease;
+}
+.nav-links a:hover::after {
+width: 100%;
+}
+/* Hamburger Menu */
+.hamburger {
+display: none;
+flex-direction: column;
+justify-content: space-between;
+width: 30px;
+height: 21px;
+cursor: pointer;
+}
+.hamburger span {
+height: 3px;
+width: 100%;
+background-color: var(--neon-blue);
+border-radius: 3px;
+transition: all 0.3s ease;
+}
+/* Hero Section */
+.hero {
+height: 100vh;
+display: flex;
+align-items: center;
+position: relative;
+overflow: hidden;
+padding-top: 80px;
+}
+.hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(10, 10, 16, 0.8), var(--dark-bg));
+z-index: -1;
+}
+.hero-content {
+position: relative;
+z-index: 2;
+}
+.hero h1 {
+font-family: 'Orbitron', sans-serif;
+font-size: 5rem;
+font-weight: 900;
+margin-bottom: 20px;
+text-transform: uppercase;
+background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+letter-spacing: 4px;
+}
+.hero p {
+font-size: 1.5rem;
+max-width: 600px;
+margin-bottom: 30px;
+color: #ccc;
+}
+.cta-button {
+display: inline-block;
+padding: 15px 40px;
+background: transparent;
+border: 2px solid var(--neon-blue);
+color: var(--neon-blue);
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 2px;
+text-decoration: none;
+position: relative;
+overflow: hidden;
+transition: all 0.3s ease;
+z-index: 1;
+}
+.cta-button:hover {
+color: var(--dark-bg);
+}
+.cta-button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: var(--neon-blue);
+transition: all 0.4s ease;
+z-index: -1;
+}
+.cta-button:hover::before {
+left: 0;
+}
+/* Track Animation */
+.track {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 120px;
+background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 L0,40 L1200,40 L1200,0 Z" fill="%2300f3ff" opacity="0.2"/><path d="M0,40 L0,60 L1200,60 L1200,40 Z" fill="%2300f3ff" opacity="0.1"/><path d="M0,60 L0,80 L1200,80 L1200,60 Z" fill="%2300f3ff" opacity="0.05"/></svg>') repeat-x;
+background-size: cover;
+animation: trackMove 20s linear infinite;
+}
+@keyframes trackMove {
+0% { background-position: 0 0; }
+100% { background-position: 1200px 0; }
+}
+/* F1 Car */
+.f1-car {
+position: absolute;
+bottom: 70px;
+left: -100px;
+font-size: 40px;
+color: var(--neon-pink);
+text-shadow: 0 0 10px var(--neon-pink);
+animation: race 15s ease-in-out infinite;
+}
+@keyframes race {
+0% { left: -100px; transform: translateY(0); }
+25% { transform: translateY(-5px); }
+50% { transform: translateY(0); }
+75% { transform: translateY(5px); }
+100% { left: 100%; }
+}
+/* Sections */
+section {
+padding: 100px 0;
+position: relative;
+}
+.section-title {
+font-family: 'Orbitron', sans-serif;
+font-size: 2.5rem;
+text-align: center;
+margin-bottom: 60px;
+color: #fff;
+text-transform: uppercase;
+letter-spacing: 3px;
+position: relative;
+}
+.section-title::after {
+content: '';
+position: absolute;
+bottom: -15px;
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: 3px;
+background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+}
+/* About Section */
+.about-content {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 50px;
+align-items: center;
+}
+.about-text h3 {
+font-family: 'Orbitron', sans-serif;
+font-size: 1.8rem;
+margin-bottom: 20px;
+color: var(--neon-blue);
+}
+.about-text p {
+margin-bottom: 20px;
+color: #ccc;
+line-height: 1.8;
+}
+.skills {
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
+margin-top: 30px;
+}
+.skill {
+padding: 8px 20px;
+background: rgba(0, 243, 255, 0.1);
+border: 1px solid var(--neon-blue);
+border-radius: 30px;
+color: var(--neon-blue);
+font-weight: 500;
+}
+/* About Image */
+.about-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 10px;
+}
+/* Projects Section */
+.projects-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 30px;
+}
+.project-card {
+background: rgba(5, 5, 7, 0.8);
+border: 1px solid rgba(0, 243, 255, 0.2);
+border-radius: 10px;
+overflow: hidden;
+transition: all 0.3s ease;
+}
+.project-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 10px 20px rgba(0, 243, 255, 0.2);
+border-color: var(--neon-blue);
+}
+.project-img {
+height: 200px;
+background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+color: #fff;
+}
+.project-info {
+padding: 20px;
+}
+.project-info h3 {
+font-family: 'Orbitron', sans-serif;
+font-size: 1.5rem;
+margin-bottom: 10px;
+color: #fff;
+}
+.project-info p {
+color: #ccc;
+margin-bottom: 15px;
+}
+.project-link {
+display: inline-block;
+margin-top: 10px;
+padding: 8px 15px;
+background: transparent;
+border: 1px solid var(--neon-blue);
+color: var(--neon-blue);
+text-decoration: none;
+border-radius: 4px;
+transition: all 0.3s ease;
+}
+.project-link:hover {
+background: var(--neon-blue);
+color: var(--dark-bg);
+}
+/* Contact Section */
+.contact-content {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 50px;
+}
+.contact-form {
+background: rgba(5, 5, 7, 0.8);
+padding: 30px;
+border-radius: 10px;
+border: 1px solid rgba(0, 243, 255, 0.2);
+}
+.form-group {
+margin-bottom: 20px;
+}
+.form-group label {
+display: block;
+margin-bottom: 8px;
+color: var(--neon-blue);
+font-weight: 600;
+}
+.form-group input,
+.form-group textarea {
+width: 100%;
+padding: 12px 15px;
+background: rgba(0, 243, 255, 0.05);
+border: 1px solid rgba(0, 243, 255, 0.2);
+border-radius: 5px;
+color: #fff;
+font-family: 'Rajdhani', sans-serif;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+outline: none;
+border-color: var(--neon-blue);
+box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+.submit-btn {
+padding: 12px 30px;
+background: transparent;
+border: 2px solid var(--neon-blue);
+color: var(--neon-blue);
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 1px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.submit-btn:hover {
+background: var(--neon-blue);
+color: var(--dark-bg);
+}
+/* Form Status Messages */
+.form-status {
+padding: 10px;
+margin: 20px 0;
+border-radius: 5px;
+text-align: center;
+display: none;
+}
+.form-status.success {
+background: rgba(0, 255, 0, 0.1);
+border: 1px solid rgba(0, 255, 0, 0.5);
+color: #00ff00;
+display: block;
+}
+.form-status.error {
+background: rgba(255, 0, 0, 0.1);
+border: 1px solid rgba(255, 0, 0, 0.5);
+color: #ff0000;
+display: block;
+}
+/* Footer */
+footer {
+background: var(--darker-bg);
+padding: 40px 0;
+text-align: center;
+border-top: 1px solid rgba(0, 243, 255, 0.2);
+}
+.social-links {
+display: flex;
+justify-content: center;
+gap: 20px;
+margin-bottom: 20px;
+}
+.social-links a {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 50px;
+height: 50px;
+border: 2px solid var(--neon-blue);
+border-radius: 50%;
+color: var(--neon-blue);
+font-size: 1.5rem;
+transition: all 0.3s ease;
+}
+.social-links a:hover {
+background: var(--neon-blue);
+color: var(--dark-bg);
+transform: translateY(-5px);
+box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+}
+/* Scroll to Top Button */
+.scroll-to-top {
+position: fixed;
+bottom: 30px;
+right: 30px;
+width: 50px;
+height: 50px;
+background: rgba(0, 243, 255, 0.2);
+border: 2px solid var(--neon-blue);
+border-radius: 50%;
+color: var(--neon-blue);
+font-size: 1.5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.3s ease;
+z-index: 999;
+opacity: 0;
+visibility: hidden;
+}
+.scroll-to-top.active {
+opacity: 1;
+visibility: visible;
+}
+.scroll-to-top:hover {
+background: var(--neon-blue);
+color: var(--dark-bg);
+transform: translateY(-5px);
+box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+}
+/* Responsive Design */
+@media (max-width: 992px) {
+.hero h1 {
+font-size: 4rem;
+}
+.about-content,
+.contact-content {
+grid-template-columns: 1fr;
+}
+}
+@media (max-width: 768px) {
+.hero h1 {
+font-size: 3rem;
+}
+.nav-links {
+position: fixed;
+top: 80px;
+left: -100%;
+width: 100%;
+height: calc(100vh - 80px);
+background: var(--darker-bg);
+flex-direction: column;
+justify-content: center;
+align-items: center;
+transition: all 0.5s ease;
+gap: 40px;
+}
+.nav-links.active {
+left: 0;
+}
+.hamburger {
+display: flex;
+z-index: 1001;
+}
+.hamburger.active span:nth-child(1) {
+transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+transform: rotate(-45deg) translate(7px, -6px);
+}
+}
+@media (max-width: 576px) {
+.hero h1 {
+font-size: 2.5rem;
+}
+.hero p {
+font-size: 1.2rem;
+}
+.section-title {
+font-size: 2rem;
+}
+.scroll-to-top {
+bottom: 20px;
+right: 20px;
+width: 40px;
+height: 40px;
+font-size: 1.2rem;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<nav>
+<div class="logo">JEEVESH</div>
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+<div class="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</nav>
+</div>
+</header>
+<section id="home" class="hero">
+<div class="container hero-content">
+<h1>JEEVESH</h1>
+<p>Frontend Developer & UI/UX Designer with a need for speed and precision.</p>
+<a href="#projects" class="cta-button">View My Work</a>
+</div>
+<div class="track"></div>
+<div class="f1-car">
+<i class="fas fa-car"></i>
+</div>
+</section>
+<section id="about">
+<div class="container">
+<h2 class="section-title">About Me</h2>
+<div class="about-content">
+<div class="about-text">
+<h3>Designing at the speed of light</h3>
+<p>I'm a frontend developer with a passion for creating immersive digital experiences. Drawing inspiration from Formula 1 racing, I value precision, speed, and innovation in my work.</p>
+<p>With expertise in HTML, CSS, JavaScript, and modern frameworks, I build websites that not only look stunning but perform flawlessly across all devices.</p>
+<div class="skills">
+<span class="skill">HTML</span>
+<span class="skill">CSS</span>
+<span class="skill">JavaScript</span>
+<span class="skill">React</span>
+<span class="skill">UI/UX</span>
+<span class="skill">Figma</span>
+</div>
+</div>
+<div class="about-image">
+<img src="my photo.jpeg" alt="Jeevesh" style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;">
+</div>
+</div>
+</div>
+</section>
+<section id="projects">
+<div class="container">
+<h2 class="section-title">My Projects</h2>
+<div class="projects-grid">
+<div class="project-card">
+<div class="project-img">
+<i class="fas fa-file-alt"></i>
+</div>
+<div class="project-info">
+<h3>Resume Generator</h3>
+<p>A powerful resume generator tool that helps create professional resumes quickly and easily.</p>
+<a href="https://bravebrucewayne.wixsite.com/resumegen" target="_blank" class="project-link">View Project</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="container">
+<h2 class="section-title">Get In Touch</h2>
+<div class="contact-content">
+<div class="contact-info">
+<h3 style="color: var(--neon-blue); margin-bottom: 20px; font-family: 'Orbitron', sans-serif;">Let's collaborate</h3>
+<p style="color: #ccc; margin-bottom: 30px;">Have a project that needs lightning-fast execution and precision design? Let's discuss how we can work together to create something amazing.</p>
+<div style="margin-bottom: 20px;">
+<p style="color: var(--neon-blue); font-weight: 600;"><i class="fas fa-envelope" style="margin-right: 10px;"></i> jeeveshvar2006@gmail.com</p>
+</div>
+<div>
+<p style="color: var(--neon-blue); font-weight: 600;"><i class="fas fa-phone" style="margin-right: 10px;"></i> +91 9952823154</p>
+</div>
+</div>
+<div class="contact-form">
+<form id="contactForm">
+<div id="formStatus" class="form-status"></div>
+<div class="form-group">
+<label for="name">Name</label>
+<input type="text" id="name" name="name" placeholder="Your Name" required>
+</div>
+<div class="form-group">
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="Your Email" required>
+</div>
+<div class="form-group">
+<label for="message">Message</label>
+<textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+</div>
+<button type="submit" class="submit-btn">Send Message</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="container">
+<div class="social-links">
+<a href="#"><i class="fab fa-github"></i></a>
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="https://instagram.com/jazz_jeevesh" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+<p>&copy; 2023 Jeevesh. All rights reserved.</p>
+</div>
+</footer>
+<div class="scroll-to-top">
+<i class="fas fa-arrow-up"></i>
+</div>
+<script>
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if(targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if(targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+// Close mobile menu if open
+if (navLinks.classList.contains('active')) {
+hamburger.classList.remove('active');
+navLinks.classList.remove('active');
+}
+});
+});
+// Simple animation on scroll
+const observerOptions = {
+root: null,
+rootMargin: '0px',
+threshold: 0.1
+};
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('animate');
+}
+});
+}, observerOptions);
+document.querySelectorAll('section').forEach(section => {
+observer.observe(section);
+});
+// Scroll to Top Button
+const scrollToTopBtn = document.querySelector('.scroll-to-top');
+window.addEventListener('scroll', () => {
+if (window.pageYOffset > 300) {
+scrollToTopBtn.classList.add('active');
+} else {
+scrollToTopBtn.classList.remove('active');
+}
+});
+scrollToTopBtn.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+// Hamburger Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+hamburger.classList.toggle('active');
+navLinks.classList.toggle('active');
+});
+// Contact Form Submission
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Get form data
+const name = document.getElementById('name').value;
+const email = document.getElementById('email').value;
+const message = document.getElementById('message').value;
+// Simple validation
+if (!name || !email || !message) {
+formStatus.textContent = 'Please fill in all fields.';
+formStatus.classList.add('error');
+return;
+}
+// Email validation
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailPattern.test(email)) {
+formStatus.textContent = 'Please enter a valid email address.';
+formStatus.classList.add('error');
+return;
+}
+// Simulate form submission (in a real scenario, you'd use AJAX to send to a server)
+formStatus.textContent = 'Sending your message...';
+formStatus.classList.remove('error', 'success');
+setTimeout(() => {
+formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+formStatus.classList.add('success');
+contactForm.reset();
+// Clear status message after 5 seconds
+setTimeout(() => {
+formStatus.textContent = '';
+formStatus.classList.remove('success');
+}, 5000);
+}, 1500);
+});
+</script>
+</body>
+</html>
